@@ -2,10 +2,12 @@ package com.Erik.RepoAPI.rest;
 
 
 import com.Erik.RepoAPI.rest.exception.ApiErrors;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.stream.Collectors;
 public class ApplicationControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiErrors handleValidationError(MethodArgumentNotValidException ex) {
         BindingResult br = ex.getBindingResult();
         List<String> message = br.getAllErrors().stream().map(
