@@ -11,14 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 public class RepoApiApplication {
 
-//    @Bean
-//    public CommandLineRunner run(ClienteRepository repository ) {
-//        return args -> {
-//            Cliente cliente = Cliente.builder().cpf("22855674808").nome("Erik Santana").dataCadastro(LocalDate.now()).build();
-//            repository.save(cliente);
-//        };
-//    }
-
     public static void main(String[] args) {
         SpringApplication.run(RepoApiApplication.class, args);
     }
