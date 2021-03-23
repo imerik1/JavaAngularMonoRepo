@@ -1,13 +1,21 @@
 package com.Erik.RepoAPI.model.entity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Data
-public class Servico {
+@Getter
+@Setter
+@Table(name = "servico")
+public class Servico implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -17,7 +25,7 @@ public class Servico {
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
-    private Clientes cliente;
+    private Cliente cliente;
 
     @Column
     private BigDecimal valor;
