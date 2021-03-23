@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {
@@ -39,7 +41,7 @@ public class ClienteController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Cliente clienteAtualizado) {
+    public void atualizar(@PathVariable Integer id, @RequestBody @Valid Cliente clienteAtualizado) {
         repository.findById(id).map(client -> {
             clienteAtualizado.setId(client.getId());
             return repository.save(clienteAtualizado);
