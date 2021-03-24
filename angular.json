@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "RepoFront": {
+    "clientes-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/RepoFront",
+            "outputPath": "dist/clientes-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -39,6 +43,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -61,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "RepoFront:build"
+            "browserTarget": "clientes-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "RepoFront:build:production"
+              "browserTarget": "clientes-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "RepoFront:build"
+            "browserTarget": "clientes-app:build"
           }
         },
         "test": {
@@ -109,16 +114,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "RepoFront:serve"
+            "devServerTarget": "clientes-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "RepoFront:serve:production"
+              "devServerTarget": "clientes-app:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "RepoFront"
+    }},
+  "defaultProject": "clientes-app"
 }
