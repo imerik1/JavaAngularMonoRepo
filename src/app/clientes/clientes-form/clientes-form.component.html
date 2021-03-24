@@ -1,0 +1,87 @@
+<h1 class="mt-4">Clientes</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Cadastro</li>
+</ol>
+<div class="container">
+  <form action="" #clienteForm="ngForm" (ngSubmit)="onSubmit()" class="my-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+          Cliente salvo/atualizado com sucesso!
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngFor="let error of errors"
+        >
+          {{ error }}
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="this.cliente.id">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">ID:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="id"
+            [ngModel]="cliente.id"
+            disabled="true"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="this.cliente.dataCadastro">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Data de Cadastro:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="dataCadastro"
+            [ngModel]="cliente.dataCadastro"
+            disabled="true"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Nome:</label>
+          <input
+            type="text"
+            name="nome"
+            [(ngModel)]="cliente.nome"
+            class="form-control"
+            value=" "
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">CPF:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cpf"
+            [(ngModel)]="cliente.cpf"
+            value=" "
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-save mx-2"></i>Salvar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
