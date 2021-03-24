@@ -11,13 +11,14 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/clientes")
+@CrossOrigin("*")
 public class ClienteController {
     @Autowired
     private ClienteRepository repository;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente salvar(@RequestBody Cliente cliente) {
+    public Cliente salvar(@Valid @RequestBody Cliente cliente) {
         return repository.save(cliente);
     }
 

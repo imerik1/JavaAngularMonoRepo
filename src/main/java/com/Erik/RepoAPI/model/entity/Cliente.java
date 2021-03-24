@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
 
     @Column(nullable = false, length = 11)
     @NotNull(message = "{campo.cpf.obrigatorio}")
-    @CPF(message = "campo.cpf.invalido")
+    @CPF(message = "O CPF está inválido")
     private String cpf;
 
     @Column(name = "data_cadastro", updatable = false)
