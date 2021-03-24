@@ -3,6 +3,8 @@ package com.Erik.RepoAPI.model.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.context.annotation.Primary;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -28,7 +30,7 @@ public class Cliente implements Serializable {
     @NotEmpty(message = "{campo.nome.obrigatorio}")
     private String nome;
 
-    @Column(nullable = false, length = 11)
+    @Column(nullable = false, length = 11, unique = true)
     @NotNull(message = "{campo.cpf.obrigatorio}")
     @CPF(message = "O CPF está inválido")
     private String cpf;
