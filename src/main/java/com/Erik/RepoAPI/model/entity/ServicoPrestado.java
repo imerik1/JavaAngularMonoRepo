@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Table(name = "servico")
-public class Servico implements Serializable {
+public class ServicoPrestado implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
