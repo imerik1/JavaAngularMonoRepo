@@ -6,6 +6,20 @@
   <form action="" #form="ngForm" *ngIf="this.clientes[0]" (submit)="onSubmit()">
     <div class="row">
       <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+          Serviço salvo com sucesso!
+        </div>
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngFor="let error of errors"
+        >
+          {{ error }}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         <div class="form-group">
           <label class="mr-2" for="idCliente">Cliente</label>
           <select
