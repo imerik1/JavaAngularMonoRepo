@@ -1,1 +1,82 @@
-<p>servico-prestado-lista works!</p>
+<h1 class="mt-4">Serviços Prestados</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Listar serviços</li>
+</ol>
+<div class="container my-2">
+  <form action="" #consultaForm="ngForm" (submit)="consultar()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="mr-2" for="inputNome">Cliente</label>
+          <select
+            class="form-control"
+            id="inputNome"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="nome"
+            name="nome"
+          >
+            <option value="">Selecionar...</option>
+            <option *ngFor="let cliente of clientes" [ngValue]="cliente.nome">
+              {{ cliente.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="mr-2" for="inputMes">Mês</label>
+          <select
+            class="form-control"
+            id="inputMes"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="mes"
+            name="mes"
+            required
+          >
+            <option value="">Selecionar...</option>
+            <option *ngFor="let mes of meses" [ngValue]="mes">
+              {{ mes }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row my-2">
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-search mx-2"></i>Consultar
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of lista">
+            <td>{{ s.cliente.nome }}</td>
+            <td>{{ s.descricao }}</td>
+            <td>
+              {{
+                "R$ " +
+                  s.valor.toLocaleString("pt-br", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  })
+              }}
+            </td>
+            <td>{{ s.data }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
