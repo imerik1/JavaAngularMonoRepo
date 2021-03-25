@@ -2,16 +2,14 @@
 <ol class="breadcrumb mb-4">
   <li class="breadcrumb-item active">Consultar</li>
 </ol>
-<div class="row">
-  <div class="col-md-12">
-    <button class="btn btn-warning">
-      <i class="fa fa-plus"></i>
-      Novo
-    </button>
-  </div>
-</div>
 <div class="row my-2">
   <div class="col-md-12">
+    <div class="alert alert-success" role="alert" *ngIf="this.mensagemSucesso">
+      {{ this.mensagemSucesso }}
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="this.mensagemErro">
+      {{ this.mensagemErro }}
+    </div>
     <table class="table table-condensed table-hover">
       <thead>
         <tr>
@@ -24,12 +22,50 @@
       </thead>
       <tbody>
         <tr *ngFor="let cliente of clientes">
-          <th>{{ cliente.id }}</th>
-          <th>{{ cliente.nome }}</th>
-          <th>{{ cliente.cpf }}</th>
-          <th>{{ cliente.dataCadastro }}</th>
+          <td>{{ cliente.id }}</td>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.cpf }}</td>
+          <td>{{ cliente.dataCadastro }}</td>
+          <td>
+            <button
+              class="btn btn-primary mx-1"
+              routerLink="/clientes-form/{{ cliente.id }}"
+            >
+              <i class="fa fa-edit"></i>
+            </button>
+            <button
+              class="btn btn-danger mx-1"
+              data-toggle="modal"
+              data-target="#modalDelecao"
+              (click)="readyDelete(cliente)"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div id="modalDelecao" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4>Confirmação</h4>
+        </div>
+        <div class="modal-body" *ngIf="this.clienteSelecionado">
+          Confirma a deleção do(a) cliente {{ this.clienteSelecionado.nome }}
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn btn-success"
+            (click)="deleteCliente(this.clienteSelecionado)"
+            data-dismiss="modal"
+          >
+            Confirmar
+          </button>
+          <button class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

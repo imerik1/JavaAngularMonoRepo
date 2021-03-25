@@ -9,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClienteListaComponent implements OnInit {
   clientes: Cliente[] = [];
+  clienteSelecionado: Cliente;
+  mensagemSucesso: string;
+  mensagemErro: string;
 
   constructor(private service: ClientesService) {}
 
@@ -16,5 +19,21 @@ export class ClienteListaComponent implements OnInit {
     this.service.getAllCliente().subscribe((response) => {
       this.clientes = response;
     });
+  }
+
+  readyDelete(cliente: Cliente) {
+    this.clienteSelecionado = cliente;
+  }
+
+  deleteCliente(cliente: Cliente) {
+    this.service.deleteCliente(cliente.id).subscribe(
+      (response) => {
+        this.mensagemSucesso = 'Cliente foi deletado com sucesso';
+        this.ngOnInit();
+      },
+      (errorMessage) => {
+        this.mensagemErro = 'Não foi possível remover o cliente';
+      }
+    );
   }
 }
