@@ -1,0 +1,75 @@
+<h1 class="mt-4">Serviços</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Cadastro</li>
+</ol>
+<div class="container">
+  <form action="" #form="ngForm" *ngIf="this.clientes[0]" (submit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="mr-2" for="idCliente">Cliente</label>
+          <select
+            class="form-control"
+            id="inputIdCliente"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="servico.idCliente"
+            name="idCliente"
+          >
+            <option value="">Selecionar...</option>
+            <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+              {{ cliente.nome }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label class="mr-2" for="inputDescricao">Descrição</label>
+          <input
+            class="form-control"
+            [(ngModel)]="servico.descricao"
+            type="text"
+            name="descricao"
+            id="inputDescricao"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="mr-2" for="inputData">Data</label>
+          <input
+            class="form-control"
+            [(ngModel)]="servico.data"
+            type="date"
+            name="data"
+            id="inputData"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="mr-2" for="inputPreco">Preço</label>
+          <input
+            class="form-control"
+            [(ngModel)]="servico.preco"
+            type="text"
+            name="preco"
+            id="inputPreco"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 my-2">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </form>
+  <div class="row my-4" *ngIf="!this.clientes[0]">
+    Nenhum cliente cadastrado
+  </div>
+</div>

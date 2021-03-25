@@ -1,3 +1,5 @@
+import { ServicoPrestadoService } from './servico-prestado.service';
+import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { ClientesService } from './clientes.service';
 import { FormsModule } from '@angular/forms';
 import { ClientesModule } from './clientes/clientes.module';
@@ -19,9 +21,10 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     TemplateModule,
     ClientesModule,
+    ServicoPrestadoModule,
     FormsModule,
   ],
-  providers: [ClientesService],
+  providers: [ClientesService, ServicoPrestadoService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
